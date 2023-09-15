@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         return (first, second)
     }
     
+    var isFirst: Bool = true
     
     // MARK: ------------------- View Life Cycle -------------------
     override func viewDidLoad() {
@@ -74,8 +75,12 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tblView.scrollToRow(at: .init(row: 1, section: 0), at: .middle, animated: false)
-        colView.scrollToItem(at: .init(item: 1, section: 0), at: .centeredHorizontally, animated: false)
+        if isFirst {
+            tblView.scrollToRow(at: .init(row: 1, section: 0), at: .middle, animated: false)
+            colView.scrollToItem(at: .init(item: 1, section: 0), at: .centeredHorizontally, animated: false)
+            
+            isFirst = false
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

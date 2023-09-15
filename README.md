@@ -7,4 +7,10 @@
 
 ![Preview image](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/preview.gif)
 
+[![Video Label](http://img.youtube.com/vi/25jZD0f6D_w/0.jpg)](https://youtu.be/25jZD0f6D_w)
+
+<!-- 
+
 <img src="https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/prevRunDebug.jpg" width="50%" href="https://youtu.be/25jZD0f6D_w?si=jm1RTm3irZ9CZbI7" alt="text">
+--!>
+

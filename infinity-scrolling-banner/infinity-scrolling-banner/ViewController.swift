@@ -21,19 +21,16 @@ class ViewController: UIViewController {
     var arrForCol: [Int] = []
     
     var timerTbl: Timer? {
-        didSet {
-            btnTmArrs[0].setTitle(timerStr.tbl, for: .normal)
-        }
-    }
-    var timerColV: Timer? {
-        didSet {
-            btnTmArrs[1].setTitle(timerStr.col, for: .normal)
-        }
+        didSet { btnTmArrs[0].setTitle(timerStr.tbl, for: .normal) }
     }
     
-    var isNilTblTimer: Bool {
-        return timerTbl == nil
+    var timerColV: Timer? {
+        didSet { btnTmArrs[1].setTitle(timerStr.col, for: .normal) }
     }
+    
+    var isNilTblTimer: Bool { return timerTbl == nil }
+    
+    var isNilColVTimer: Bool { return timerColV == nil }
     
     var timerStr: (tbl: String, col: String) {
         let first = "타이머 테이블 : \(isNilTblTimer ? "시작" : "멈춤")"
@@ -41,9 +38,6 @@ class ViewController: UIViewController {
         return (first, second)
     }
     
-    var isNilColVTimer: Bool {
-        return timerColV == nil
-    }
     
     // MARK: ------------------- View Life Cycle -------------------
     override func viewDidLoad() {
@@ -97,9 +91,9 @@ class ViewController: UIViewController {
                 let isTbl: Bool = i == 0
                 btn.setTitle("\(isTbl ? timerStr.tbl : timerStr.col)", for: .normal)
                 
-                btn.cornerRadi = 10
+                btn.cornerRadi  = 10
                 btn.borderWidth = 1
-                btn.borderCol = .systemBlue
+                btn.borderCol   = .systemBlue
             }
         }
 
@@ -124,8 +118,7 @@ class ViewController: UIViewController {
         case 1:
             startTimerColv(isNilColVTimer)
             
-        default:
-            break
+        default: break
         }
     }
     
@@ -195,12 +188,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "tblCell", for: indexPath) as? tblCell else { return UITableViewCell() }
 
-        cell.tag = indexPath.row
-        cell.backgroundColor = .getCol(indexPath.row)
-        cell.selectionStyle = .none
+        cell.tag                = indexPath.row
+        cell.backgroundColor    = .getCol(indexPath.row)
+        cell.selectionStyle     = .none
         
-        let obj = arrForTbl[indexPath.row]
-        cell.label.text = String(describing: obj)
+        let obj                 = arrForTbl[indexPath.row]
+        cell.label.text         = String(describing: obj)
         
         return cell
     }
@@ -229,11 +222,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cvCell", for: indexPath) as? cvCell else { return UICollectionViewCell() }
 
-        cell.tag = indexPath.item
-        cell.backgroundColor = .getCol(indexPath.row)
+        cell.tag                = indexPath.item
+        cell.backgroundColor    = .getCol(indexPath.row)
         
-        let obj = arrForCol[indexPath.item]
-        cell.label.text = String(describing: obj)
+        let obj                 = arrForCol[indexPath.item]
+        cell.label.text         = String(describing: obj)
         
         return cell
     }
@@ -255,8 +248,7 @@ extension ViewController {
         case colView:
             startTimerColv(false)
             
-        default:
-            break
+        default: break
         }
     }
     
@@ -295,8 +287,7 @@ extension ViewController {
                 startTimerColv(isNilColVTimer)
             }
             
-        default:
-            break
+        default: break
         }
     }
     
@@ -317,8 +308,7 @@ extension ViewController {
                 colView.scrollToItem(at: .init(item: 1, section: 0), at: .centeredHorizontally, animated: false)
             }
             
-        default:
-            break
+        default: break
         }
     }
     

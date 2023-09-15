@@ -19,6 +19,16 @@ class ViewController: UIViewController {
     var arrForTbl: [Int] = []
     var arrForCol: [Int] = []
     
+    var timerTbl: Timer?
+    var timerColV: Timer?
+    
+    var isNilTblTimer: Bool {
+        return timerTbl == nil
+    }
+    
+    var isNilColVTimer: Bool {
+        return timerColV == nil
+    }
     
     // MARK: ------------------- View Life Cycle -------------------
     override func viewDidLoad() {
@@ -37,17 +47,83 @@ class ViewController: UIViewController {
             arrForCol.append(i)
         }
         
+        if let first = arrForTbl.first, let last = arrForTbl.last {
+            arrForTbl.insert(last, at: 0)
+            arrForTbl.append(first)
+        }
+        
+        if let first = arrForCol.first, let last = arrForCol.last {
+            arrForCol.insert(last, at: 0)
+            arrForCol.append(first)
+        }
+        
         pr("--> arrForTbl : \(arrForTbl)")
         pr("--> arrForCol : \(arrForCol)")
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        print("")
+        startTimerTbl(isNilTblTimer)
+        startTimerColv(isNilColVTimer)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        startTimerTbl(isNilTblTimer)
+        startTimerColv(isNilColVTimer)
+    }
 
     // MARK: ------------------- IBAction functions -------------------
     
     
     // MARK: ------------------- function -------------------
+    func startTimerTbl(_ isNil: Bool) {
+        if isNil {
+            timerTbl = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true, block: { [weak self] _ in
+                guard let `self` else { return }
+                if let crntIdx = self.tblView.visibleCells.first?.tag {
+                    let lstIdx = (self.arrForTbl.count - 1)
+                    let nxtIdx = crntIdx + 1 > lstIdx ? 0 : crntIdx + 1
+                    
+                    // 2 - [ 0 - 1 - 2 ] - 0
+                    self.tblView.scrollToRow(at: .init(row: nxtIdx, section: 0), at: .middle, animated: true)
+                }
+            })
+            
+            pr("--> 1. 타이머 시작")
+            
+        } else {
+            timerTbl?.invalidate()
+            timerTbl = nil
+            pr("--> 1. 타이머 해제")
+        }
+    }
+    
+    func startTimerColv(_ isNil: Bool) {
+        if isNil {
+            timerColV = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true, block: { [weak self] _ in
+                guard let `self` else { return }
+                if let crntIdx = self.colView.visibleCells.first?.tag {
+                    let lstIdx = (self.arrForCol.count - 1)
+                    let nxtIdx = crntIdx + 1 > lstIdx ? 0 : crntIdx + 1
+                    
+                    // 2 - [ 0 - 1 - 2 ] - 0
+                    self.colView.scrollToItem(at: .init(item: nxtIdx, section: 0), at: .centeredHorizontally, animated: true)
+                }
+            })
+            
+            pr("--> 2. 타이머 시작")
+            
+        } else {
+            timerColV?.invalidate()
+            timerColV = nil
+            pr("--> 2. 타이머 해제")
+        }
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -66,11 +142,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .getCol(indexPath.row)
         cell.selectionStyle = .none
         
-        cell.label.text = String(describing: cell.tag)
+        let obj = arrForTbl[indexPath.row]
+        cell.label.text = String(describing: obj)
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        pr("--> tableView didSelected = \(indexPath.row)")
+    }
     
 }
 
@@ -89,8 +169,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         cell.tag = indexPath.item
         cell.backgroundColor = .getCol(indexPath.row)
         
-        cell.label.text = String(describing: cell.tag)
+        
+        let obj = arrForCol[indexPath.item]
+        cell.label.text = String(describing: obj)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pr("--> collectionView didSelected = \(indexPath.item)")
     }
 }

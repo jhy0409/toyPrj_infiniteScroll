@@ -38,7 +38,7 @@ func pr<T>(_ object: @autoclosure () -> T, _ file: String = #file, _ function : 
     let appName     = String(describing: filePaths[filePaths.count - 2])
     let fileName    = String(describing: filePaths[filePaths.count - 1].split(separator: ".").first ?? "")
 //    let queue = Thread.isMainThread ? "UI" : "BG"
-    print("[\(appName)] [\(getCurrentDate())] [\(fileName)] [\(line)]\n\(String(reflecting: value))\n")
+    print("[\(appName)] [\(getCurrentDate())] [\(fileName)]\n[\(function)] [\(line)]\n\(String(reflecting: value))\n")
     #endif
 }
 

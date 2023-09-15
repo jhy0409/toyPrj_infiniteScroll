@@ -25,7 +25,7 @@ extension UIColor {
     static func getCol(_ idx: Int) -> UIColor {
         let tmpRn: [UIColor] = [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue]
         
-        return tmpRn[idx % tmpRn.count].withAlphaComponent(0.3)
+        return tmpRn[idx % tmpRn.count].withAlphaComponent(0.4)
     }
 }
 
@@ -57,6 +57,26 @@ extension UIView {
         set {
             clipsToBounds = true
             layer.cornerRadius = newValue
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable var borderCol: UIColor {
+        get {
+            return UIColor(cgColor: layer.borderColor ?? .init(gray: 0, alpha: 0))
+        }
+        
+        set {
+            layer.borderColor = newValue.cgColor
         }
     }
 }

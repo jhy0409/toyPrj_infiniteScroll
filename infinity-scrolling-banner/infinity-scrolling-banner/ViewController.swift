@@ -51,6 +51,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrForTbl.count
     }
@@ -60,6 +64,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.tag = indexPath.row
         cell.backgroundColor = .getCol(indexPath.row)
+        cell.selectionStyle = .none
+        
+        cell.label.text = String(describing: cell.tag)
         
         return cell
     }
@@ -67,7 +74,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrForCol.count
     }
@@ -77,6 +88,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
         cell.tag = indexPath.item
         cell.backgroundColor = .getCol(indexPath.row)
+        
+        cell.label.text = String(describing: cell.tag)
         
         return cell
     }

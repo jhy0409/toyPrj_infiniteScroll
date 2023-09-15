@@ -8,5 +8,5 @@
 import UIKit
 
 class cvCell: UICollectionViewCell {
-    
+    @IBOutlet weak var label: UILabel!
 }

@@ -5,7 +5,7 @@
 1. 테이블뷰 : 상, 하 무한스크롤
 2. 컬렉션뷰 : 좌, 우 무한스크롤
 
-<img src="https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/preview.gif" width="200">
+<img src="https://github.com/jhy0409/toyPrj_infiniteScroll/blob/main/preview.gif" width="200">
 </br>
 </br>
 

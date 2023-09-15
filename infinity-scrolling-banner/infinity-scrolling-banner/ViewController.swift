@@ -109,8 +109,8 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        startTimerTbl(isNilTblTimer)
-        startTimerColv(isNilColVTimer)
+        startTimerTbl(false)
+        startTimerColv(false)
     }
 
     // MARK: ------------------- IBAction functions -------------------

@@ -1,4 +1,4 @@
-# toyPrj - infinity scrolling banner
+# toyPrj - infinite scroll banner
 
 ### Swift 무한스크롤 배너 
 

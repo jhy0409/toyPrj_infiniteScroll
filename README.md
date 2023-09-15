@@ -8,5 +8,7 @@
 ![Preview image](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/preview.gif)
 
 
-https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/assets/75109824/ac0acbe0-8502-4cc2-a89d-aa035304845e
-
+[![Video Label](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/prevRunDebug.jpg)](https://youtu.be/25jZD0f6D_w?si=jm1RTm3irZ9CZbI7)
+<!-- 
+[![IMAGE ALT TEXT HERE](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/prevRunDebug.jpg)](https://youtu.be/25jZD0f6D_w)
+--!>

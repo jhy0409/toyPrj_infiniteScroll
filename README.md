@@ -7,8 +7,11 @@
 
 ![Preview image](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/preview.gif)
 
+[<img src="https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/prevRunDebug.jpg" width="50%">](https://youtu.be/25jZD0f6D_w?si=jm1RTm3irZ9CZbI7)
 
-[![Video Label](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/prevRunDebug.jpg)](https://youtu.be/25jZD0f6D_w?si=jm1RTm3irZ9CZbI7)
+
+
 <!-- 
+[![Video Label](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/prevRunDebug.jpg)](https://youtu.be/25jZD0f6D_w?si=jm1RTm3irZ9CZbI7)
 [![IMAGE ALT TEXT HERE](https://github.com/jhy0409/toyPrj_infinity-scrolling-banner/blob/main/prevRunDebug.jpg)](https://youtu.be/25jZD0f6D_w)
 --!>

@@ -20,8 +20,16 @@ class ViewController: UIViewController {
     var arrForTbl: [Int] = []
     var arrForCol: [Int] = []
     
-    var timerTbl: Timer?
-    var timerColV: Timer?
+    var timerTbl: Timer? {
+        didSet {
+            btnTmArrs[0].setTitle(timerStr.tbl, for: .normal)
+        }
+    }
+    var timerColV: Timer? {
+        didSet {
+            btnTmArrs[1].setTitle(timerStr.col, for: .normal)
+        }
+    }
     
     var isNilTblTimer: Bool {
         return timerTbl == nil
@@ -66,14 +74,18 @@ class ViewController: UIViewController {
         
         pr("--> arrForTbl : \(arrForTbl)")
         pr("--> arrForCol : \(arrForCol)")
-
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tblView.scrollToRow(at: .init(row: 1, section: 0), at: .middle, animated: false)
+        colView.scrollToItem(at: .init(item: 1, section: 0), at: .centeredHorizontally, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        tblView.scrollToRow(at: .init(row: 1, section: 0), at: .middle, animated: false)
-        colView.scrollToItem(at: .init(item: 1, section: 0), at: .centeredHorizontally, animated: false)
         
         //startTimerTbl(isNilTblTimer)
         //startTimerColv(isNilColVTimer)
@@ -90,6 +102,7 @@ class ViewController: UIViewController {
                 btn.borderCol = .systemBlue
             }
         }
+
         
     }
 
@@ -107,11 +120,9 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             startTimerTbl(isNilTblTimer)
-            sender.setTitle("\(timerStr.tbl)", for: .normal)
         
         case 1:
             startTimerColv(isNilColVTimer)
-            sender.setTitle("\(timerStr.col)", for: .normal)
             
         default:
             break
@@ -239,10 +250,10 @@ extension ViewController {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         switch scrollView {
         case tblView:
-            startTimerTbl(isNilTblTimer)
+            startTimerTbl(false)
             
         case colView:
-            startTimerColv(isNilColVTimer)
+            startTimerColv(false)
             
         default:
             break

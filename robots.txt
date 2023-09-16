@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jhy0409.github.io/toyPrj_infiniteScroll/sitemap.xml
